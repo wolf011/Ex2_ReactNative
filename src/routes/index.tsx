@@ -30,7 +30,7 @@ export default function AppRouter() {
         drawerActiveTintColor: "yellow"
       }}
       >
-      <Drawer.Screen name="Início" component={Home} />
+      <Drawer.Screen name="Início" component={Home}/>
       <Drawer.Screen name="Museu Imperial" component={Museu} />
       <Drawer.Screen name="Palácio de Cristal" component={Palacio} />
       <Drawer.Screen name="Hotel Quitandinha" component={Hotel} />

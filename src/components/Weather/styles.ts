@@ -2,21 +2,13 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: "#C9D5DF",
         alignItems: "center",
         justifyContent: "center",
     },
-    titulo: {
+    bloco: {
         margin: 0,
         paddingTop: "5%",
-        fontSize: 32,
-        fontWeight: "bold",
         justifyContent: "center",
         alignItems: "center",
-    },
-    texto: {
-        margin: 0,
-        padding: "5%",
-        textAlign: "justify"
     }
 });

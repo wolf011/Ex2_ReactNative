@@ -1,26 +1,37 @@
 import { View, Text, Alert } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import api from '../../services/api'
+import { styles } from './styles';
 
-interface CoordData {
-    c1:  string;
-    c2:  string;
+interface ClimaData {
+    temp: number;
+    feels_like: number;
+    temp_min: number;
+    temp_max: number;
+    pressure: number;
+    sea_level: number;
+    grnd_level: number;
+    humidity: number;
+    temp_kf: number;
 }
 
-export default function Temperatura () {
-    const [c1, setC1] = useState("43.1042");
-    const [c2, setC2] = useState("22.3017");
-    const [temp, setTemp] = useState<CoordData | null>(null);
+export default function Temperatura() {
+    const [longi, setLongi] = useState("-43.175480");
+    const [lat, setLat] = useState("-22.509911");
+    const [clima, setClima] = useState<ClimaData | null>(null);
     const key = "";
 
     const buscar = async () => {
+        if (!longi && !lat) {
+            Alert.alert("O cnpj deve ter 14 dígitos!")
+        }
         try {
-            const response = await api.get(`/onecall?lat=${c1}&lon=${c2}&eappid=${key}`);
+            const response = await api.get(`/forecast?lat=${lat}&lon=${longi}&cnt=1&appid=${key}&units=metric`);
             if ((await response).data.erro) {
-                setTemp(null);
+                setClima(null);
                 Alert.alert("Coordenadas inválidas")
             }
-            setTemp(response.data);
+            setClima(response.data.list[0].main);
         } catch (error) {
             console.error("Error: " + error);
         }
@@ -30,9 +41,15 @@ export default function Temperatura () {
         buscar();
     }, [])
 
-  return (
-    <View>
-        <Text>{JSON.stringify(temp)}</Text>
-    </View>
-  )
+    return (
+        <View style={styles.container}>
+            {clima &&(<View style={styles.bloco}>
+                <Text>Temperatura: {clima?.temp}ºC</Text>
+                <Text>Humidade: {clima?.humidity}%</Text>
+                <Text>Sensação Térmica: {clima?.feels_like}ºC</Text>
+                <Text>Máx: {clima?.temp_max}ºC</Text>
+                <Text>Min: {clima?.temp_min}ºC</Text>
+            </View>)}
+        </View>
+    )
 }
