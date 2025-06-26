@@ -13,7 +13,7 @@ export default function Home() {
 
       <Text style={styles.titulo}>Turismo de Petrópolis</Text>
 
-      <Temperatura/>
+      
 
       <Text style={styles.texto}>
         A Serra da Estrela, onde se encontra Petrópolis, era praticamente desconhecida pelos colonizadores portugueses nos primeiros 200 anos de colonização,

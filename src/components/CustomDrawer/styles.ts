@@ -10,10 +10,16 @@ export const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center"
     },
-        imagem: {
+    imagem: {
         padding: 0,
         margin: 0,
-        height: '50%',
-        objectFit:"contain"
+        height: '40%',
+        objectFit: "contain"
+    },
+    temperatura: {
+        top: 10,        
+        left: 0,
+        right: 0,
+        alignItems: "center",
     }
 })
