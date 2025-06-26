@@ -1,4 +1,4 @@
-Exercício 1 de React Native
+Exercício 2 de React Native
 
 Grupo 5: 
 
